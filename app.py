@@ -11,7 +11,7 @@ import os
 # -------------------------
 # Config / Model path
 # -------------------------
-MODEL_PATH = "models/tuned_xgb_hour_model.joblib"   # your joblib model file
+MODEL_PATH = "tuned_xgb_hour_model.joblib"   # your joblib model file
 DATA_PATHS = ["hour.csv", "data/hour.csv", "data\\hour.csv"]  # try multiple locations
 
 # -------------------------
@@ -401,4 +401,5 @@ if predict_clicked:
                 st.error(f"Failed to render feature importances: {e}")
 
             st.markdown("</div>", unsafe_allow_html=True)
+
 
