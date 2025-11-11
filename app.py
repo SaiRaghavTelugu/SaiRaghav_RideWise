@@ -255,21 +255,35 @@ workingday_flag = 1 if workingday_choice == "Yes" else 0
 # -------------------------
 # Predict button (centered)
 # -------------------------
-col_l, col_c, col_r = st.columns([1,6,1])
+# -------------------------
+# Predict button (perfectly centered)
+# -------------------------
+_, col_c, _ = st.columns([1, 6, 1])
 with col_c:
-    st.markdown("<div style='display:flex; justify-content:center; align-items:center; margin:8px 0 18px 0;'>", unsafe_allow_html=True)
-    # center the button visually (applies to Streamlit buttons)
     st.markdown("""
     <style>
-    /* make buttons block-level and centered inside their container */
-    .stButton>button, .stButton button {
-        display: block !important;
-        margin: 0 auto !important;
+    div.stButton > button:first-child {
+        display: block;
+        margin: 0 auto;
+        background: linear-gradient(135deg, #e63946, #b81e2c);
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        border: none;
+        border-radius: 10px;
+        padding: 14px 32px;
+        box-shadow: 0 4px 12px rgba(230,57,70,0.25);
+        transition: all 0.2s ease;
+    }
+    div.stButton > button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(230,57,70,0.35);
     }
     </style>
     """, unsafe_allow_html=True)
+
     predict_clicked = st.button("Predict Hourly Ride Count", key="predict_button")
-    st.markdown("</div>", unsafe_allow_html=True)
+
 
 # -------------------------
 # Auto-scroll helper
@@ -401,5 +415,6 @@ if predict_clicked:
                 st.error(f"Failed to render feature importances: {e}")
 
             st.markdown("</div>", unsafe_allow_html=True)
+
 
 
